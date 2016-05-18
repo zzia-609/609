@@ -1,0 +1,9 @@
+--编译parent后，maven本地仓库中会重新打包新的模块，609-frontend中的war包为最终编译好的项目
+--或者是工作目录609-frontend\target\609-frontend-{version}.war
+
+-- -Dmaven.repo.local=D:/.m2/repository:指定install到哪个位置，
+--这里特别指定是因为我的maven本地仓库的位置不是默认位置：C:\Users\puwu\.m2\repository
+
+-- -Dmaven.test.skip=true：install的时候跳过测试
+
+mvn install -Dmaven.repo.local=D:/.m2/repository -Dmaven.test.skip=true
