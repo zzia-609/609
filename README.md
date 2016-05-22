@@ -1,2 +1,2 @@
 # 609
-fuck 赵嘎
+fuck everyone
