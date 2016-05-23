@@ -7,7 +7,7 @@
 
 	<name>609-web</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<parent>
 		<artifactId>609-parent</artifactId>
 		<groupId>com.zzia</groupId>
@@ -20,6 +20,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 		<!-- Spring begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>
