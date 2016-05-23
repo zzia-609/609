@@ -1,6 +1,6 @@
 # 609
-<<<<<<< HEAD
-fuck 赵嘎
-=======
-fuck everyone
->>>>>>> e0c4deac8a3ef33cc54cf1dbf71fbdc49e831a96
+这是一个基于java开发的翻译类web应用
+项目有zxaxvk进行管理
+puwu2013负责设计
+bootstrap8积极参与开发的项目
+不过希望大家努力争取早日开发完成
