@@ -5,3 +5,5 @@ maven模块管理，现在分了三个模块
 
 之后计划：公共的代码放到609-common中
 服务层放到609-service
+
+readme
