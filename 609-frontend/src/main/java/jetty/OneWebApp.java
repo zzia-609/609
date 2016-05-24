@@ -1,11 +1,8 @@
 package jetty;
-import java.io.File;
 import java.lang.management.ManagementFactory;
 
 import org.eclipse.jetty.jmx.MBeanContainer;
-import org.eclipse.jetty.security.HashLoginService;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.AllowSymLinkAliasChecker;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class OneWebApp {
@@ -32,7 +29,9 @@ public class OneWebApp {
 		String basePath = System.getProperty("user.dir");
 		webapp.setContextPath("/609");
 		webapp.setDescriptor(basePath + "/src/main/webapp/WEB-INF/web.xml");
-		webapp.setResourceAlias("", "");
+		webapp.setResourceBase(basePath + "/src/main/webapp/");
+		webapp.setClassLoader(Thread.currentThread().getContextClassLoader());
+//		webapp.setExtraClasspath(basePath + "/target/classes");
 //		webapp.addAliasCheck(new AllowSymLinkAliasChecker());
 
 		// A WebAppContext is a ContextHandler as well so it needs to be set to
