@@ -47,7 +47,7 @@
 <!-- 	<mvc:resources location="/css/" mapping="/css/**"/> -->
 <!-- 	<mvc:resources location="/scripts/" mapping="/scripts/**"/> -->
 <!-- 	<mvc:resources location="/images/" mapping="/images/**"/> -->
-<!-- 	<mvc:resources location="/view/" mapping="/*.jsp"/> -->
+<!-- 	<mvc:resources location="/" mapping="*.jsp"/> -->
 <!-- 	<mvc:resources location="/view/" mapping="/*.html"/> -->
 
 	<!-- 视图解释类 -->
