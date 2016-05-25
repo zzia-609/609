@@ -40,7 +40,7 @@
 	</mvc:annotation-driven>
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.zzia609.controller" />
+	<context:component-scan base-package="com.zzia609.controller, com.zzia609.aop" />
 	
 	<mvc:default-servlet-handler />
 
