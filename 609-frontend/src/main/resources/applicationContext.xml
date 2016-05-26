@@ -29,6 +29,20 @@
 <!-- 			<aop:after-returning method="doAfterReturning" pointcut-ref="webLogAspectPointcut" returning="ret" /> -->
 		</aop:aspect>
 	</aop:config>
+	
+	<aop:config>  
+        <aop:aspect id="TestAspect" ref="aspectBean">  
+            <!--配置com.spring.service包下所有类或接口的所有方法-->  
+            <aop:pointcut id="businessService"  
+                expression="execution(* com.zzia609.service.impl.*.*(..))" />  
+            <aop:before pointcut-ref="businessService" method="doBefore"/>  
+            <aop:after pointcut-ref="businessService" method="doAfter"/>  
+            <aop:around pointcut-ref="businessService" method="doAround"/>  
+            <aop:after-throwing pointcut-ref="businessService" method="doThrowing" throwing="ex"/>  
+        </aop:aspect>  
+    </aop:config>  
+      
+    <bean id="aspectBean" class="com.zzia609.aop.TestAspect" />
      
      <!-- Spring MVC config -->
      <import resource="classpath*:springMVC-servlet.xml"/>
