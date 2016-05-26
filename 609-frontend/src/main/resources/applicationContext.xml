@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:mybatis="http://www.mybatis.org/schema/mybatis"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans  
-     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
-     http://www.springframework.org/schema/context  
-     http://www.springframework.org/schema/context/spring-context-3.0.xsd  
-     http://www.mybatis.org/schema/mybatis  
-     http://www.mybatis.org/schema/mybatis/mybatis-spring.xsd  
-     http://www.springframework.org/schema/mvc  
-     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd   
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-4.2.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+    
+    <context:annotation-config />
+	<context:component-scan base-package="com.zzia609.service.impl" />
      
+	<bean id="webLogAspectInterceptor" class="com.zzia609.aop.WebLogAspect">
+	</bean>
+	
+	<aop:config>
+		<aop:aspect id="webLogAspect" ref="webLogAspectInterceptor">
+			<aop:pointcut id="webLogAspectPointcut" expression="(execution(* com.zzia609.controller.*.*.*(..))) or execution(* com.zzia609.service.impl.*.*.*(..))" />
+			<aop:before method="doBefore" pointcut-ref="webLogAspectPointcut" />
+<!-- 			<aop:after-returning method="doAfterReturning" pointcut-ref="webLogAspectPointcut" returning="ret" /> -->
+		</aop:aspect>
+	</aop:config>
+     
+     <!-- Spring MVC config -->
      <import resource="classpath*:springMVC-servlet.xml"/>
 
 </beans> 

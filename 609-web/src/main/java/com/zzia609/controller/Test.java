@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 @RestController
-@RequestMapping("/base")
+@RequestMapping("/test")
 public class Test extends MultiActionController {
 	
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)

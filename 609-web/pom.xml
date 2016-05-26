@@ -58,6 +58,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework.version}</version>
 		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${org.springframework.version}</version>
+		</dependency>
 		<!-- Spring end -->
 		<dependency>
 			<groupId>mysql</groupId>
@@ -84,6 +89,7 @@
 			<artifactId>jetty-server</artifactId>
 			<version>${jetty.version}</version>
 		</dependency>
+		<!-- jetty jsp 部署到tomcat下面要注释掉这三个
 		<dependency>
 		    <groupId>org.eclipse.jetty</groupId>
 		    <artifactId>jetty-annotations</artifactId>
@@ -99,10 +105,11 @@
 		    <artifactId>apache-jstl</artifactId>
 		    <version>${jetty.version}</version>
 		</dependency>
+		-->
 		<dependency>
-		    <groupId>org.springframework.boot</groupId>
-		    <artifactId>spring-boot-starter-aop</artifactId>
-		    <version>1.3.5.RELEASE</version>
+	    <groupId>org.aspectj</groupId>
+		    <artifactId>aspectjweaver</artifactId>
+		    <version>1.8.6</version>
 		</dependency>
 	</dependencies>
 	
