@@ -3,6 +3,7 @@ import java.lang.management.ManagementFactory;
 
 import org.eclipse.jetty.jmx.MBeanContainer;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.Configuration;
 import org.eclipse.jetty.webapp.WebAppContext;
 
 public class OneWebApp {
@@ -33,6 +34,16 @@ public class OneWebApp {
 		webapp.setClassLoader(Thread.currentThread().getContextClassLoader());
 //		webapp.setExtraClasspath(basePath + "/target/classes");
 //		webapp.addAliasCheck(new AllowSymLinkAliasChecker());
+		
+		Configuration.ClassList classlist = Configuration.ClassList
+                .setServerDefault( server );
+        classlist.addBefore(
+                "org.eclipse.jetty.webapp.JettyWebXmlConfiguration",
+                "org.eclipse.jetty.annotations.AnnotationConfiguration" );
+		
+		webapp.setAttribute(
+                "org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern",
+                ".*/[^/]*servlet-api-[^/]*\\.jar$|.*/javax.servlet.jsp.jstl-.*\\.jar$|.*/[^/]*taglibs.*\\.jar$" );
 
 		// A WebAppContext is a ContextHandler as well so it needs to be set to
 		// the server so it is aware of where to send the appropriate requests.
