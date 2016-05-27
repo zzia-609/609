@@ -17,24 +17,20 @@
     http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
     
     <context:annotation-config />
+	<context:component-scan base-package="com.zzia609.controller" />
+	
+<!-- 	<mvc:annotation-driven/> -->
+
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+    
+    <context:annotation-config />
 	<context:component-scan base-package="com.zzia609.service.impl" />
      
-	<bean id="webLogAspectInterceptor" class="com.zzia609.aop.WebLogAspect">
-	</bean>
-	
-	<aop:config>
-		<aop:aspect id="webLogAspect" ref="webLogAspectInterceptor">
-			<aop:pointcut id="webLogAspectPointcut" expression="(execution(* com.zzia609.controller.*.*.*(..))) or execution(* com.zzia609.service.impl.*.*.*(..))" />
-			<aop:before method="doBefore" pointcut-ref="webLogAspectPointcut" />
-<!-- 			<aop:after-returning method="doAfterReturning" pointcut-ref="webLogAspectPointcut" returning="ret" /> -->
-		</aop:aspect>
-	</aop:config>
-	
 	<aop:config>  
         <aop:aspect id="TestAspect" ref="aspectBean">  
             <!--配置com.spring.service包下所有类或接口的所有方法-->  
-            <aop:pointcut id="businessService"  
-                expression="execution(* com.zzia609.service.impl.*.*(..))" />  
+<!--             <aop:pointcut id="businessService" expression="(execution(* com.zzia609.service.impl.*.*(..))) or (execution(* com.zzia609.controller.*.*(..)))" />   -->
+            <aop:pointcut id="businessService" expression="(execution(* com.zzia609.controller.*.*(..)))" />  
             <aop:before pointcut-ref="businessService" method="doBefore"/>  
             <aop:after pointcut-ref="businessService" method="doAfter"/>  
             <aop:around pointcut-ref="businessService" method="doAround"/>  
